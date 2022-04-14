@@ -7,7 +7,7 @@ public class Function {
             }
             return ((double) 1 / getFactorial(n)) * mul;
         } else {
-            System.out.println("N less then 1");
+            System.out.println("N less then 2");
             return 0;
         }
     }
