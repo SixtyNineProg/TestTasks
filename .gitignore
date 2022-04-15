@@ -35,5 +35,4 @@ build/
 ### Maven ###
 .mvn/
 
-
 /out/
