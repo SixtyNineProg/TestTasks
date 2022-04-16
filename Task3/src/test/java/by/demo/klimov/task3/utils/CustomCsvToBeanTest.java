@@ -21,4 +21,11 @@ class CustomCsvToBeanTest {
         List<Posting> postings = csvToBean.beanBuilder("postings.csv", Posting.class, ';');
         Assert.notEmpty(postings, "Postings is empty");
     }
+
+    @Test
+    void beanBuilderPostingItem() throws Exception {
+        CustomCsvToBean<Posting> csvToBean = new CustomCsvToBean<>();
+        List<Posting> postings = csvToBean.beanBuilder("postings.csv", Posting.class, ';');
+        Assert.notNull(postings.get(0).getItem().get(0), "Item is empty");
+    }
 }

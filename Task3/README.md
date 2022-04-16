@@ -26,3 +26,6 @@ Use "mvn spring-boot:run" to run project.
 
 ### CSV Files Path
 src\main\resources\csv\
+
+### CSV Format
+Standard CSV format without Tabs and Spaces
