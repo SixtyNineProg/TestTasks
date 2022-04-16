@@ -1,15 +1,13 @@
 package by.demo.klimov.task3;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Task3ApplicationTests {
+public class Task3ApplicationTests {
 
     @Test
-    void contextLoads() {
-
+    void contextLoads() throws Exception {
     }
 
 }

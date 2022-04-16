@@ -7,5 +7,5 @@ import java.util.List;
 public interface LoginService {
     long create(Login login);
 
-    List<Long> create(List<Login> logins);
+    int create(List<Login> logins);
 }

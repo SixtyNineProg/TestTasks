@@ -30,7 +30,9 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public List<Long> create(List<Login> logins) {
-        return null;
+    public int create(List<Login> logins) {
+        log.info(logins.size() + " " + Constants.LOGINS_SAVED);
+        loginRepository.saveAll(logins);
+        return logins.size();
     }
 }

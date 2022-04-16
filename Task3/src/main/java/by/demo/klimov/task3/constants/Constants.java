@@ -9,6 +9,8 @@ public class Constants {
     public static final String SEARCH_RESULT = "Found {} results";
 
     public static final String LOGIN_SAVED = "Login saved successful : {}";
+    public static final String POSTING_SAVED = "Posting saved successful : {}";
+
     public static final String DIRECTOR_ALREADY_EXIST = "Director with the given parameters already exist with id = ";
     public static final String DIRECTOR_RECEIVED = "Director with id={} received successful : {}";
     public static final String DIRECTORS_RECEIVED = "Found a list of directors with size={}";
@@ -20,4 +22,7 @@ public class Constants {
     public static final String DATE_FORMAT = "dd-MM-yyyy";
 
     public static final String ERROR_PARSING_OF_OBJECT = "can't represent object of class {} in json form for logging: {}";
+    public static final String LOGINS_SAVED = "Logins created.";
+    public static final String POSTINGS_SAVED = "Postings created.";
+
 }

@@ -11,14 +11,14 @@ class CustomCsvToBeanTest {
     @Test
     void beanBuilderLogin() throws Exception {
         CustomCsvToBean<Login> csvToBean = new CustomCsvToBean<>();
-        List<Login> logins = csvToBean.beanBuilder("logins.csv", Login.class, ',');
-        Assert.isTrue(true, "Logins is empty");
+        List<Login> logins = csvToBean.beanBuilder("csv/logins.csv", Login.class, ',');
+        Assert.notEmpty(logins, "Logins is empty");
     }
 
     @Test
     void beanBuilderPosting() throws Exception {
         CustomCsvToBean<Posting> csvToBean = new CustomCsvToBean<>();
-        List<Posting> postings = csvToBean.beanBuilder("postings.csv", Posting.class, ';');
+        List<Posting> postings = csvToBean.beanBuilder("csv/postings.csv", Posting.class, ';');
         Assert.notEmpty(postings, "Postings is empty");
     }
 
