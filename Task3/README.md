@@ -23,3 +23,6 @@ http://localhost:8082/base/swagger-ui/index.html<br/>
 This project uses such build tool as maven.<br/>
 Use "mvn clean package" to build project.<br/>
 Use "mvn spring-boot:run" to run project.
+
+### CSV Files Path
+src\main\resources\csv\

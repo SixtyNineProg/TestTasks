@@ -3,14 +3,12 @@ package by.demo.klimov.task3.model;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvDate;
 import com.opencsv.bean.CsvNumber;
-import constants.Constants;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -32,13 +30,13 @@ public class Posting {
     private int item;
 
     @Column(name = "doc_date", nullable = false)
-    @DateTimeFormat(pattern = Constants.DATE_FORMAT)
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     @CsvBindByName(column = "Doc. Date")
     @CsvDate("dd.MM.yyyy")
     private Date docDate;
 
     @Column(name = "pstng_date", nullable = false)
-    @DateTimeFormat(pattern = Constants.DATE_FORMAT)
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     @CsvBindByName(column = "Pstng Date")
     @CsvDate("dd.MM.yyyy")
     private Date pstngDate;
