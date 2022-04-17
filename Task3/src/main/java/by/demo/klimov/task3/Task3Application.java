@@ -7,6 +7,7 @@ import by.demo.klimov.task3.repository.ItemRepository;
 import by.demo.klimov.task3.service.LoginService;
 import by.demo.klimov.task3.service.PostingService;
 import by.demo.klimov.task3.utils.CustomCsvToBean;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.List;
 
+@Slf4j
 @SpringBootApplication
 public class Task3Application {
 	public static void main(String[] args) {
@@ -42,12 +44,24 @@ public class Task3Application {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			int posSize = postingService.create(postings);
-			int logSize = loginService.create(logins);
-//			// create and save new pages
-//			pageRepository.save(new Page(1, "Introduction contents", "Introduction", book));
-//			pageRepository.save(new Page(65, "Java 8 contents", "Java 8", book));
-//			pageRepository.save(new Page(95, "Concurrency contents", "Concurrency", book));
+
+			List<Login> finalLogins = logins;
+			assert postings != null;
+			for (Posting posting : postings) {
+				assert finalLogins != null;
+				Login login = finalLogins.stream()
+						.filter(m -> m.getAppAccountName().equals(posting.getUserName()))
+						.findFirst()
+						.orElse(null);
+				if ((login != null && login.isActive())) {
+					posting.setAuthorizedDelivery(true);
+				} else {
+					posting.setAuthorizedDelivery(false);
+				}
+			}
+
+			postingService.create(postings);
+			loginService.create(logins);
 		};
 	}
 }

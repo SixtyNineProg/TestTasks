@@ -30,12 +30,20 @@ public class PostingServiceImpl implements PostingService {
     }
 
     @Override
-    public List<Posting> read(String firstName, String lastName, Date birthDate) {
-        return null;
+    public List<Posting> searchPostingsByDateBetween(Date dateFrom, Date dateTo) {
+        List<Posting> postings = postingRepository.findPostingsByPstngDateBetween(dateFrom, dateTo);
+        log.info(Constants.SEARCH_RESULT, postings.size());
+        return postings;
     }
 
     @Override
-    public List<Posting> searchAll() {
-        return null;
+    public List<Posting> searchPostingsByDateBetweenWithAuthorizedDelivery(
+            Date dateFrom, Date dateTo, boolean authorizedDelivery) {
+        List<Posting> postings = postingRepository.findPostingsByPstngDateBetweenAndAuthorizedDelivery(
+                dateFrom, dateTo, authorizedDelivery);
+        log.info(Constants.SEARCH_RESULT, postings.size());
+        return postings;
     }
+
+
 }

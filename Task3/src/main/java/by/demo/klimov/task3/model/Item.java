@@ -1,16 +1,19 @@
 package by.demo.klimov.task3.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.opencsv.bean.CsvBindByName;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "item")
-@Data
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Item {
@@ -23,6 +26,7 @@ public class Item {
     private String name;
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonBackReference
     private List<Posting> postings;
 
     public Item(String name) {

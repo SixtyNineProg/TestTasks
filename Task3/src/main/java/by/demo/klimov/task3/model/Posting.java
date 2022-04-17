@@ -1,20 +1,22 @@
 package by.demo.klimov.task3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvDate;
 import com.opencsv.bean.CsvNumber;
 import com.opencsv.bean.CsvRecurse;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "posting")
-@Data
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Posting {
@@ -29,16 +31,15 @@ public class Posting {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "item_id", nullable = false)
     @CsvRecurse
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Item item;
 
     @Column(name = "doc_date", nullable = false)
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
     @CsvBindByName(column = "Doc. Date")
     @CsvDate("dd.MM.yyyy")
     private Date docDate;
 
     @Column(name = "pstng_date", nullable = false)
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
     @CsvBindByName(column = "Pstng Date")
     @CsvDate("dd.MM.yyyy")
     private Date pstngDate;
@@ -70,4 +71,22 @@ public class Posting {
 
     @Column(name = "authorized_delivery")
     private Boolean authorizedDelivery;
+
+    @Override
+    public String toString() {
+        return "Posting: " +
+                "id:" + id +
+                ", matDoc: " + matDoc +
+                ", item: " + item +
+                ", docDate: " + docDate +
+                ", pstngDate: " + pstngDate +
+                ", materialDescription: " + materialDescription +
+                ", quantity: " + quantity +
+                ", bun: " + bun +
+                ", amountLC: " + amountLC +
+                ", crcy: " + crcy +
+                ", userName: " + userName +
+                ", authorizedDelivery: " + authorizedDelivery +
+                '}';
+    }
 }

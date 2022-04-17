@@ -8,7 +8,7 @@ import java.util.List;
 public interface PostingService {
     int create(List<Posting> postings);
 
-    List<Posting> read(String firstName, String lastName, Date birthDate);
+    List<Posting> searchPostingsByDateBetween(Date dateFrom, Date dateTo);
 
-    List<Posting> searchAll();
+    List<Posting> searchPostingsByDateBetweenWithAuthorizedDelivery(Date dateFrom, Date dateTo, boolean authorizedDelivery);
 }
