@@ -6,8 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 public interface PostingService {
-    long create(Posting posting);
-
     int create(List<Posting> postings);
 
     List<Posting> read(String firstName, String lastName, Date birthDate);

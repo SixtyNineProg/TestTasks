@@ -1,9 +1,9 @@
 package by.demo.klimov.task3.model;
 
-import com.opencsv.bean.CsvBindAndSplitByName;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvDate;
 import com.opencsv.bean.CsvNumber;
+import com.opencsv.bean.CsvRecurse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +11,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "posting")
@@ -27,9 +26,10 @@ public class Posting {
     @CsvBindByName(column = "Mat. Doc.")
     private String matDoc;
 
-    @OneToMany(mappedBy = "posting", fetch = FetchType.EAGER)
-    @CsvBindAndSplitByName(elementType = Item.class, splitOn = "\\|", converter = TextToItem.class)
-    private List<Item> item;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "item_id", nullable = false)
+    @CsvRecurse
+    private Item item;
 
     @Column(name = "doc_date", nullable = false)
     @DateTimeFormat(pattern = "dd-MM-yyyy")

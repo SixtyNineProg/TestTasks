@@ -1,10 +1,12 @@
 package by.demo.klimov.task3.model;
 
+import com.opencsv.bean.CsvBindByName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "item")
@@ -14,12 +16,16 @@ import javax.persistence.*;
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @CsvBindByName(column = "Item")
     private long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name="posting_id", nullable=false)
-    private Posting posting;
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Posting> postings;
+
+    public Item(String name) {
+        this.name = name;
+    }
 }

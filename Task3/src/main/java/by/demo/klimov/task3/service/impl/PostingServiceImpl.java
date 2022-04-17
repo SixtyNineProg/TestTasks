@@ -4,7 +4,6 @@ import by.demo.klimov.task3.constants.Constants;
 import by.demo.klimov.task3.model.Posting;
 import by.demo.klimov.task3.repository.PostingRepository;
 import by.demo.klimov.task3.service.PostingService;
-import by.demo.klimov.task3.utils.ObjectToJson;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,13 +20,6 @@ public class PostingServiceImpl implements PostingService {
 
     public PostingServiceImpl(PostingRepository postingRepository) {
         this.postingRepository = postingRepository;
-    }
-
-    @Override
-    public long create(Posting posting) {
-        log.info(Constants.POSTING_SAVED, ObjectToJson.postingToJson(posting));
-        postingRepository.save(posting);
-        return posting.getId();
     }
 
     @Override

@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class Task3ApplicationTests {
 
     @Test
-    void contextLoads() throws Exception {
+    void contextLoads() {
     }
 
 }
