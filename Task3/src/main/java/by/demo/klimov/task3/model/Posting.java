@@ -71,22 +71,4 @@ public class Posting {
 
     @Column(name = "authorized_delivery")
     private Boolean authorizedDelivery;
-
-    @Override
-    public String toString() {
-        return "Posting: " +
-                "id:" + id +
-                ", matDoc: " + matDoc +
-                ", item: " + item +
-                ", docDate: " + docDate +
-                ", pstngDate: " + pstngDate +
-                ", materialDescription: " + materialDescription +
-                ", quantity: " + quantity +
-                ", bun: " + bun +
-                ", amountLC: " + amountLC +
-                ", crcy: " + crcy +
-                ", userName: " + userName +
-                ", authorizedDelivery: " + authorizedDelivery +
-                '}';
-    }
 }

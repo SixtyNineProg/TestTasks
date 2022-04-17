@@ -1,15 +1,18 @@
-# User service
+# Posting service
 
 ## Description
-Microservice
+Microservice for postings
 
 ## REST-services:
         
-### GET [http://localhost:9000/webapplication/user/{userId}](http://localhost:9000/webapplication/user/{userId})
-##### getting user by id
+### GET http://localhost:8082/base/search_postings_between_date?date_from={date_from}&date_to={date_to}&authorized_delivery={bool_value}
+##### getting postings between dates
 
         where:
-        {userId} - identity number
+        {date_from} - start date
+        {date_to} - end date
+        Optional:
+        {bool_value} - authorized_delivery(true/false)
 
 ### DOC
 JSON format:<br/>
